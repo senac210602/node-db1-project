@@ -2,13 +2,21 @@ const express = require("express");
 const accountsRouter = require('./accounts/accounts-router')
 const server = express();
 
+
 server.use(express.json());
 server.use('api/accounts', accountsRouter)
 
-server.use('*',(req, res) => {
-res.send(`
-<h1>chana created this</h1>
-<p>more info</p>
-`)
+
+server.get('/',(req, res) => {
+    res.send(`
+    <h1>hi</h1>
+    `)
 })
+
+server.use('*',(req, res) => {
+res.status(404).json({
+    message:'not found'
+})
+})
+
 module.exports = server;
