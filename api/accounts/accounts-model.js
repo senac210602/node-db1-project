@@ -3,10 +3,11 @@ const db = require('../../data/db-config')
 
  const getAll = () => {
   
-  return  db("accounts")
-  
+ const accounts = db('accounts')
+ console.log('ACC', accounts)
+ return accounts
 } 
-console.log(getAll())
+
 const getById = id => {
  return db('accounts').where('id', id).first();
 }
